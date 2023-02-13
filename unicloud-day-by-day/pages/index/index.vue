@@ -13,6 +13,17 @@
 			<input name="password" type="text" style="border: solid 1px #999999;height: 40rpx;"/>
 		    <button form-type="submit">Submit</button>
 		</form>
+		
+		<form @submit="onQuery">
+			<input name="username" type="text" style="border: solid 1px #999999;height: 40rpx;"/>
+		    <button form-type="submit">Query</button>
+		</form>
+		
+		<view v-for="item in users" :key="item._id">
+			username: {{item.username}}
+			age: {{item.age}}
+			password: {{item.password}}
+		</view>
 	</view>
 </template>
 
@@ -20,13 +31,23 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				users: []
 			}
 		},
 		onLoad() {
 			// this.getUser();
 		},
 		methods: {
+			onQuery(e) {
+				uniCloud.callFunction({
+					name:"queryUser",
+					data: e.detail.value
+				}).then( res => {
+					console.log(res.result.data);
+					this.users = res.result.data
+				})
+			},
 			onSubmit(e) {
 				console.log(e.detail.value);
 				this.createUser(e.detail.value)
