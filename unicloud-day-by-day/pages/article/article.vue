@@ -55,18 +55,30 @@
 				console.log(this.articleModel);
 				// const res = await articleObj.add(this.articleModel.title, this.articleModel.content)
 				// console.log(res);
-				try {
-					const res = await articleObj.add(this.articleModel.title, this.articleModel.content)
+				// try {
+				// 	const res = await articleObj.add(this.articleModel.title, this.articleModel.content)
+				// 	uni.showToast({
+				// 		title: '创建成功'
+				// 	})
+				// } catch (e) {
+				// 	uni.showModal({
+				// 		title: '创建失败',
+				// 		content: e.errMsg,
+				// 		showCancel: false
+				// 	})
+				// }
+				articleObj.add(this.articleModel.title, this.articleModel.content).then(res => {
 					uni.showToast({
 						title: '创建成功'
 					})
-				} catch (e) {
+				}).catch(e => {
+					console.log(e);
 					uni.showModal({
 						title: '创建失败',
 						content: e.errMsg,
 						showCancel: false
 					})
-				}
+				})
 			},
 			async getArticle() {
 				const res = await articleObj.get(10)
