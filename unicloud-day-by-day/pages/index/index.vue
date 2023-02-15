@@ -24,6 +24,11 @@
 			age: {{item.age}}
 			password: {{item.password}}
 		</view>
+		
+		<form @submit="onDelete">
+			<input name="id" type="text" style="border: solid 1px #999999;height: 40rpx;"/>
+		    <button form-type="submit">Delete</button>
+		</form>
 	</view>
 </template>
 
@@ -39,6 +44,14 @@
 			// this.getUser();
 		},
 		methods: {
+			onDelete(e) {
+				uniCloud.callFunction({
+					name:"deleteUser",
+					data: e.detail.value
+				}).then( res => {
+					console.log(res.result);
+				})
+			},
 			onQuery(e) {
 				uniCloud.callFunction({
 					name:"queryUser",
