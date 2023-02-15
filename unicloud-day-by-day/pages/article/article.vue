@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<u-icon name="order" color="#2979ff" size="28"></u-icon>
+		<u--image :showLoading="true" :src="src" width="80px" height="80px" @click="click"></u--image>
 		<button @click="getArticle">getArticle</button>
 		<form @submit="addArticle">
 			<input name="title" type="text" style="border: 1rpx solid red;height: 80rpx;" placeholder="title"/>
@@ -14,7 +16,8 @@
 	export default {
 		data() {
 			return {
-				articles: []
+				articles: [],
+				src: 'https://cdn.uviewui.com/uview/album/1.jpg'
 			}
 		},
 		methods: {
@@ -32,6 +35,6 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
