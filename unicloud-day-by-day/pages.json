@@ -33,6 +33,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/upload/upload",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "文件上传",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
